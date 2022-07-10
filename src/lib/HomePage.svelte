@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { router } from "tinro";
 	import DoorList from "./DoorList.svelte";
-	import { DoorState, doorStore } from "../store/doors";
+	import { Door, DoorState, doorStore } from "../store/doors";
 	import ColorLegend from "./ColorLegend.svelte";
 	import { v4 as uuidv4 } from "uuid";
 	import Statistics from "./Statistics.svelte";
@@ -12,11 +12,12 @@
 
 	// Create a new door with default settings
 	const newDoor = () => {
-		const door = {
+		const door: Door = {
 			id: uuidv4(),
 			street: "",
 			house: "",
 			state: DoorState.unvisited,
+			comment: "",
 			saleAmount: null,
 		};
 

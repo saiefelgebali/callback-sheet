@@ -86,7 +86,6 @@
 			<label for="street">Street</label>
 			<input
 				id="street"
-				class="w-full"
 				type="text"
 				autocomplete="off"
 				bind:value={door.street}
@@ -97,7 +96,6 @@
 			<label for="house">House</label>
 			<input
 				id="house"
-				class="w-full"
 				type="text"
 				autocomplete="off"
 				use:autoFocus
@@ -121,6 +119,11 @@
 			/>
 		</div>
 
+		<div class="input-group">
+			<label for="comment">Comment</label>
+			<textarea id="comment" rows="2" bind:value={door.comment} />
+		</div>
+
 		<div class="flex flex-col gap-4 mt-4">
 			<button class="bg-neutral-900 text-white rounded p-4 select-none">
 				Done
@@ -138,7 +141,8 @@
 		@apply block;
 	}
 
-	.input-group > input {
-		@apply border px-4 py-2 rounded;
+	.input-group > input,
+	.input-group > textarea {
+		@apply border px-4 py-2 rounded resize-none w-full;
 	}
 </style>

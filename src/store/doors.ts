@@ -14,6 +14,7 @@ export interface Door {
 	street: string;
 	house: string;
 	state: DoorState;
+	comment: string;
 	saleAmount: number | null;
 }
 

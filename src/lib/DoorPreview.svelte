@@ -28,17 +28,20 @@
 	on:dblclick={() => router.goto(door.id)}
 >
 	<div
-		class="w-16 aspect-square bg-neutral-700 grid place-items-center text-white text-xs"
+		class="w-16 bg-neutral-700 grid place-items-center text-white text-xs"
 		class:bg-red-700={door.state === "callback"}
 		class:bg-blue-700={door.state === "close"}
 		class:bg-green-700={door.state === "sale"}
 	/>
-	<div class=" p-4 flex flex-col justify-center text-neutral-800 ">
+	<div class=" p-4 flex flex-col justify-center text-gray-800 ">
 		<p class="font-bold">
 			{door.house}
 		</p>
 		<p class="text-sm">
 			{door.street}
+		</p>
+		<p class="text-sm text-gray-500">
+			{door.comment}
 		</p>
 	</div>
 </div>
