@@ -1,20 +1,32 @@
-<script>
+<script lang="ts">
 	import { doorStore } from "../store/doors";
+
+	$: doorCount = Object.values($doorStore).length;
+	$: speakCount = Object.values($doorStore).filter(
+		(d) => d.state !== "unvisited"
+	).length;
+	$: closeCount = Object.values($doorStore).filter((d) =>
+		["close", "sale"].includes(d.state)
+	).length;
+	$: salesCount = Object.values($doorStore).filter(
+		(d) => d.state === "sale"
+	).length;
+
+	const formatStatistic = (word: string, count: number) => {
+		const singular = count === 1;
+		return `${count} ${word}${singular ? "" : "s"}`;
+	};
 </script>
 
 <p class="text-gray-600 text-sm">
-	<span>{Object.values($doorStore).length} Doors, </span>
+	<span>{formatStatistic("Door", doorCount)}, </span>
 	<span>
-		{Object.values($doorStore).filter((d) => d.state !== "unvisited")
-			.length} Speaks,
+		{formatStatistic("Speak", speakCount)},
 	</span>
 	<span>
-		{Object.values($doorStore).filter((d) =>
-			["close", "sale"].includes(d.state)
-		).length} Closes,
+		{formatStatistic("Close", closeCount)},
 	</span>
 	<span>
-		{Object.values($doorStore).filter((d) => d.state === "sale").length}
-		Sales
+		{formatStatistic("Sale", salesCount)}
 	</span>
 </p>
