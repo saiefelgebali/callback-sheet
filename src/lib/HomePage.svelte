@@ -4,6 +4,7 @@
 	import { DoorState, doorStore } from "../store/doors";
 	import ColorLegend from "./ColorLegend.svelte";
 	import { v4 as uuidv4 } from "uuid";
+	import Statistics from "./Statistics.svelte";
 
 	export let from: string;
 
@@ -38,4 +39,6 @@
 	>
 		New door
 	</button>
+
+	<Statistics />
 </div>
